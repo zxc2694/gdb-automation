@@ -1,5 +1,6 @@
 file main.elf
 target remote :3333
+#+set logging on 
 set $osp = $sp
 set $sp = $sp - 16
 b main.c:5
@@ -20,18 +21,21 @@ set $osp=$osp+1
 end
 set $sp=$sp+16
 c
-set ((USART_InitTypeDef*)$osp)->USART_BaudRate = 9600
-set ((USART_InitTypeDef*)$osp)->USART_WordLength = USART_WordLength_8b
-set ((USART_InitTypeDef*)$osp)->USART_StopBits = USART_StopBits_1
-set ((USART_InitTypeDef*)$osp)->USART_Parity = USART_Parity_No
-set ((USART_InitTypeDef*)$osp)->USART_HardwareFlowControl = USART_HardwareFlowControl_None
-set ((USART_InitTypeDef*)$osp)->USART_Mode = USART_Mode_Rx | USART_Mode_Tx
-call USART_Init(USART2, $osp)
-call USART_Cmd(USART2, ENABLE)
-c
-call USART_SendData(USART2, 'H')
-call USART_SendData(USART2, 'e')
-call USART_SendData(USART2, 'l')
-call USART_SendData(USART2, 'l')
-call USART_SendData(USART2, 'o')
-call USART_SendData(USART2, '!')
+
+/*
+ *set ((USART_InitTypeDef*)$osp)->USART_BaudRate = 9600
+ *set ((USART_InitTypeDef*)$osp)->USART_WordLength = USART_WordLength_8b
+ *set ((USART_InitTypeDef*)$osp)->USART_StopBits = USART_StopBits_1
+ *set ((USART_InitTypeDef*)$osp)->USART_Parity = USART_Parity_No
+ *set ((USART_InitTypeDef*)$osp)->USART_HardwareFlowControl = USART_HardwareFlowControl_None
+ *set ((USART_InitTypeDef*)$osp)->USART_Mode = USART_Mode_Rx | USART_Mode_Tx
+ *call USART_Init(USART2, $osp)
+ *call USART_Cmd(USART2, ENABLE)
+ *c
+ *call USART_SendData(USART2, 'H')
+ *call USART_SendData(USART2, 'e')
+ *call USART_SendData(USART2, 'l')
+ *call USART_SendData(USART2, 'l')
+ *call USART_SendData(USART2, 'o')
+ *call USART_SendData(USART2, '!')
+*/
