@@ -10,6 +10,7 @@ call RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA | RCC_APB2Periph_AFIO, ENABLE)
 call RCC_APB1PeriphClockCmd(RCC_APB1Periph_USART2, ENABLE)
 restore gdbset.dump binary 0x20004ff0	
 		# This "gdbset.dump" can create the "gdb.txt" which keeps a record of GDB operation.
+		#I refer to rampant1018 code
 call GPIO_Init(GPIOA, $osp)
 call USART_Init(USART2, $osp -16)
 call USART_Cmd(USART2, ENABLE)
