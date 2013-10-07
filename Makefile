@@ -46,6 +46,8 @@ gdbauto: main.bin
 		-kernel main.bin -monitor null &
 	$(CROSS_COMPILE)gdb -x gdb.in
 
+#QEMU offer "serial stdio" can redirect parameters of the output device, so I can display the string on GDB session.
+
 emu: main.bin
 	bash emulate.sh main.bin
 
